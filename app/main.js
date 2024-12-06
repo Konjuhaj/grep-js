@@ -1,11 +1,16 @@
 function matchPattern(inputLine, pattern) {
-  if (pattern == "\\d") {
-    return /\d/.test(inputLine);
-  }
   if (pattern.length === 1) {
     return inputLine.includes(pattern);
-  } else {
-    throw new Error(`Unhandled pattern ${pattern}`);
+  }
+  switch (pattern) {
+    case "\\d":
+      return /\d/.test(inputLine);
+
+    case "\\w":
+      return /\w/.test(inputLine);
+
+    default:
+      throw new Error(`Unhandled pattern ${pattern}`);
   }
 }
 
